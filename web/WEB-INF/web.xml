@@ -44,6 +44,14 @@
         <servlet-name>bookDetailsPage</servlet-name>
         <servlet-class>Manager.bookDetailsPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>managerHomePage</servlet-name>
+        <servlet-class>Manager.managerHomePage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>bookListPage</servlet-name>
+        <servlet-class>Unauthenticated.bookListPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homePage</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>bookDetailsPage</servlet-name>
         <url-pattern>/bookDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>managerHomePage</servlet-name>
+        <url-pattern>/managerHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bookListPage</servlet-name>
+        <url-pattern>/bookList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
