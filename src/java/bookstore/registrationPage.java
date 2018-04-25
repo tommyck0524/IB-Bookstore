@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Unauthenticated;
+package bookstore;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hochikeung
  */
-public class homePage extends HttpServlet {
+public class registrationPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +35,11 @@ public class homePage extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomePage</title>");            
+            out.println("<title>Servlet registrationPage</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomePage at " + request.getContextPath() + "</h1>");
-            out.println("<nav>");
-            out.println("<a href=''>Home</a>");
-            out.println("<a href='/IB_Bookstore/'>Browse Books</a>");
-            out.println("<a href=''>Purchase Books</a>");
-            out.println("<a href=''>Login</a>");
-            out.println("<a href=''>Register</a>");
-            out.println("</nav>");
+            out.println("<h1>Servlet registrationPage at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
             out.println("</html>");
         }
     }
