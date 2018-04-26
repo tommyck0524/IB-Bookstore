@@ -53,8 +53,9 @@ $(function() {
           </ul>
         </li>
         <%}%>
-         <%}%>
+         
         <li><a href="pages/full-width.html"> Purchase book </a>
+            <%}%>
         <li><a href="pages/style-demo.html">Browse a book</a>
         <li class="active"><a href="index.html">Homepage</a>
       </ul>
