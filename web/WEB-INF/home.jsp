@@ -69,35 +69,20 @@ $(function() {
 <div class="wrapper col2">
   <div id="featured_slide">
     <div class="featured_box">
-      <div class="floater">
-        <h2> ADD#NAME </h2>
-        <p>Orcimagna rhoncus et a nec antesque sed temportor pellus nibh conseque. Accumstsemper wisi pretium feugiat non ut eleifendrerisque at et condisse sce.</p>
-      </div>
+    
 
       <img src="images/demo/930x375.gif" alt="" /> </div>
     <div class="featured_box">
-      <div class="floater">
-        <h2>ADD#NAME</h2>
-        <p>Duisvest lacus pellus purus temper maurisus et sodalesuada loreet sapiente et. Quissociis magnisl orci dui nulla ut antesque malesuada sed pede et.</p>
-      </div>
+      <
       <img src="images/demo/930x375.gif" alt="" /> </div>
     <div class="featured_box">
-      <div class="floater">
-        <h2>ADD#NAME</h2>
-        <p>Pharetiumurna habitur et enim pellentesque phasellus aliquam nunc quis justo nam. Lobortororci dapibulum ac intesquet ut id sed intesque nec alique.</p>
-      </div>
+      
       <img src="images/demo/930x375.gif" alt="" /> </div>
     <div class="featured_box">
-      <div class="floater">
-        <h2>ADD#NAME</h2>
-        <p>Pharetiumurna habitur et enim pellentesque phasellus aliquam nunc quis justo nam. Lobortororci dapibulum ac intesquet ut id sed intesque nec alique.</p>
-      </div>
+      
       <img src="images/demo/930x375.gif" alt="" /> </div>
     <div class="featured_box">
-      <div class="floater">
-        <h2>ADD#NAME</h2>
-        <p>Nullamcorpervivamus nisl in sed adipit donec feugiat lor vel velit volutpat. Wisihabitur diculisi ac curabitur cursuspendreris sociis sed eger ipsum.</p>
-      </div>
+      
       <img src="images/demo/930x375.gif" alt="" /> </div>
   </div>
 </div>
