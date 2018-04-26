@@ -12,23 +12,23 @@
         <title>JSP Page</title>
     </head>
     <body>
-         <div class="topnav">
-         <a href="">Home</a>
+        <a href="">Home</a>
          <a href="browse">Browse Books</a>
-         <a href="purchase">Purchase Books</a>
-         <a href="login">Login</a>
+          <%if(session.getAttribute("username")!=null){%>
+            <a href="logout">Logout</a>
+            
+            <%}else{%>
+           <a href="login">Login</a>
+            <%}%>
          <a href="register">Register</a>
-
-         </div>   
-        <div class ="greeting">
-            <%if(request.getRemoteUser()!=null){%>
+         <hr>            
+            <%if(session.getAttribute("username")!=null){%>
             Welcome to IB Book Store,
-            <%=request.getRemoteUser()%>
+            <%=session.getAttribute("username")%>
             !
             <%}else{%>
             Welcome to IB Book Store, Guest!
             <%}%>
-         </div>
                          
     </body>
    
