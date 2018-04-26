@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : Apr 22, 2018, 2:41:55 PM
+    Document   : error
+    Created on : Apr 25, 2018, 11:33:25 PM
     Author     : hochikeung
 --%>
 
@@ -9,11 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Page</title>
+        <title>JSP Page</title>
     </head>
-    <body>
-        
-        <form action="login" method="POST">
+    <body>    
+        <a href="">Home</a>
+         <a href="browse">Browse Books</a>
+         <a href="purchase">Purchase Books</a>
+         <a href="login">Login</a>
+         <a href="register">Register</a>
+         <hr>
+         <p>The username or password are not correct. Please input again.</p>
+           <form action="login" method="POST">
             <table>
                 <tr>
                     <td>Username</td>
@@ -28,6 +34,6 @@
                 <tr>
                     <td><input type="submit" value="Login"/></td>
                 </tr>
-        </form>
+        <form/>
     </body>
 </html>

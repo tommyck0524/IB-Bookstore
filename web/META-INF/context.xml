@@ -1,8 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/IB_Bookstore">
-<Realm className="org.apache.catalina.realm.JDBCRealm"
-      driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-   connectionURL="jdbc:sqlserver://localhost;databaseName=TestDB;user=sa;password=Tommy6565,.;"
-       userTable="users" userNameCol="username" userCredCol="password"
-   userRoleTable="roles" roleNameCol="role"/>
-   </Context>
+<Context antiJARLocking="true" path="/IB_Bookstore"/>
