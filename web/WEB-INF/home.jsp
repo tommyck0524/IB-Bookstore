@@ -25,6 +25,8 @@ $(function() {
 });
 </script>
 </head>
+ <% session.setAttribute("username", "sunny"); %>
+<% session.setAttribute("userrole", "customer"); %>
 <body id="top">
 <div class="wrapper col1">
   <div id="header">
