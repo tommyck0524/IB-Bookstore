@@ -25,8 +25,8 @@ $(function() {
 });
 </script>
 </head>
- <%-- session.setAttribute("username", "sunny"); %>
-<% session.setAttribute("userrole", "customer"); --%>
+<% session.setAttribute("username", "sunny"); %>
+<% session.setAttribute("userrole", "customer"); %>
 <body id="top">
 <div class="wrapper col1">
   <div id="header">
@@ -58,10 +58,10 @@ $(function() {
         </li>
         <%}%>
          
-        <li><a href="pages/full-width.html"> Purchase book </a>
+        <li><a href="customer/purchase"> Purchase book </a>
             <%}%>
-        <li><a href="pages/style-demo.html">Browse a book</a>
-        <li class="active"><a href="index.html">Homepage</a>
+        <li><a href="browse">Browse a book</a>
+        <li class="active"><a href="home">Homepage</a>
       </ul>
        
       
