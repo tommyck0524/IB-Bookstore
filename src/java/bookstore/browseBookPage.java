@@ -5,12 +5,19 @@
  */
 package bookstore;
 
+import bookstore.JavaBeans.BookBean;
+import bookstore.dao.userDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import bookstore.dao.bookDao;
+import java.util.List;
 
 /**
  *
@@ -30,19 +37,21 @@ public class browseBookPage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet bookListPage</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet bookListPage at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        try {
+                 bookDao bookDao = new bookDao();
+                 List<BookBean> bookList = bookDao.retriveBookList();
+                 request.setAttribute("bookList", bookList);
+                 request.setAttribute("test", "test");
+                RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/browse.jsp");
+                dis.forward(request, response);
+            
+        } catch (Exception e) {
+            out.println("<div style='color: red'>" + e.toString() + "</div>");
         }
     }
+    
+  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
