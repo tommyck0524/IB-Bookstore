@@ -21,8 +21,6 @@ public class RegisterModel {
         ResultSet rs = null;
         Statement stmt = null;
         Statement stmt1 = null;
-
-        
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=TestDB", "sa", "Tommy6565,.");
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

@@ -25,21 +25,22 @@ $(function() {
 });
 </script>
 </head>
- <% session.setAttribute("username", "sunny"); %>
-<% session.setAttribute("userrole", "customer"); %>
+ <%-- session.setAttribute("username", "sunny"); %>
+<% session.setAttribute("userrole", "customer"); --%>
 <body id="top">
 <div class="wrapper col1">
   <div id="header">
     <div id="topnav">
-      <ul>       
-          <%if(session.getAttribute("username")!=null ){%>         
+     <ul>       
+
+          <%if(session.getAttribute("username")!=null ){%>    
             <li class="last"><a href="logout">Logout</a>
             <%}else{%>
            <li class="last"><a href="login">Login</a>
             <%}%>
-            
         <%if(session.getAttribute("username")!=null ){%>  
-        <%if(session.getAttribute("userrole")=="customer" ){%> 
+        <%String userrole = (String)session.getAttribute("userrole");%>
+        <%if(userrole.equals("customer")){%> 
         <li><a href="#"> Member area</a>
           <ul>
             <li><a href="#"> Request for refund</a></li>
@@ -47,7 +48,7 @@ $(function() {
           </ul>
         </li>
         <%}%>
-        <%if(session.getAttribute("userrole")=="admin" ){%> 
+        <%if(userrole.equals("admin")){%> 
         <li><a href="#"> Adminstration </a>
           <ul>
             <li><a href="#">Book Management</a></li>
@@ -61,8 +62,11 @@ $(function() {
         <li><a href="pages/style-demo.html">Browse a book</a>
         <li class="active"><a href="index.html">Homepage</a>
       </ul>
+       
+      
     </div>
     <div id="logo">
+                  
       <h1><a href="index.html"><strong>O</strong>p <strong>B</strong>ookStore</a></h1>
     </div>
     <br class="clear" />
@@ -131,7 +135,7 @@ $(function() {
             <div class="latestnews">
               <h2>About This Book !</h2>
               <p> bookdetails</p>
-              <p class="readmore"><a href="#">More details &raquo;</a></p>
+              <p class="readmore"><a href="#">More details  &raquo;</a></p>
             </div>
             <br class="clear" />
           </li>
