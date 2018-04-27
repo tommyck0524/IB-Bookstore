@@ -10,19 +10,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
     <body>
-        <h1>Registration</h1>
-        <fieldset>
-            <legend>Please fill in the information below to register</legend>
-            <form method="POST" action="register">
-            <p>Username <input type="text" name="username"></p>
-            <p>Password <input type="password" name="password"></p>
-            <p>Confirm password <input type="password" name="confirm_password"></p>
-            <p>Email address <input type="text" name="email"></p>
-            <p>Address <input type="text" name="address"></p>
-            <input type="submit" value="Login"/>
-            </form>
-        </fieldset>
+        <div class="login-page">
+        <div class="form">
+        <form class="register-form">
+            <h4> Register <h4>
+            <input type="text" name="username" placeholder="username">
+         <input type="password" name="password" placeholder="password">
+         <input type="password" name="confirm_password" placeholder="confirm_password">
+         <input type="text" name="email" placeholder="email">
+         <input type="text" name="address" placeholder="address">
+        <button> Register </button>
+    
+        </form>
+        
     </body>
 </html>

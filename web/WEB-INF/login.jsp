@@ -9,26 +9,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <title>Login Page</title>
+        <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
     <body>
-        <div class="login-page">
-  <div class="form" action="login" method="POST">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+        
+    <div class="login-page">
+    <div class="form">
+    <form class="login-form" action="login" method="POST">
+        <h4> Sign in <h4>
+      <input type="text" placeholder="username"  name="username" />
+      <input type="password" placeholder="password" name="password"/>
+      <button type="submit" value="Login" >login</button>
+      <p class="message">Not registered? <a href="register">Create an account</a></p>
     </form>
   </div>
 </div>
-        
     </body>
 </html>
