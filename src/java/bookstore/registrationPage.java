@@ -6,6 +6,8 @@
 package bookstore;
 
 import Models.RegisterModel;
+import bookstore.JavaBeans.UserBean;
+import bookstore.JavaBeans.Users;
 import bookstore.dao.userDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +16,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -63,8 +66,9 @@ public class registrationPage extends HttpServlet {
         boolean insertSuccess = userdao.insertSuccess(username,password,email,dbuser,dbpw,dburl);
         if (insertSuccess){
                 HttpSession session = request.getSession();
-                session.setAttribute("username",username);
-                session.setAttribute("userrole","customer");
+                String userrole = "customer";
+                UserBean userbean = new UserBean(username,password,userrole);
+                session.setAttribute("userbean",userbean);
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registerSuccess.jsp");
                 dis.forward(request, response);
         }else{

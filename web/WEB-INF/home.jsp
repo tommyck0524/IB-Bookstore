@@ -1,3 +1,4 @@
+<%@page import="bookstore.JavaBeans.UserBean"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
 Template Name: Ost Magazine
@@ -25,22 +26,23 @@ $(function() {
 });
 </script>
 </head>
-<% session.setAttribute("username", "sunny"); %>
-<% session.setAttribute("userrole", "customer"); %>
+<%--! session.setAttribute("username", "sunny"); %>
+<% session.setAttribute("userrole", "customer"); !--%>
 <body id="top">
 <div class="wrapper col1">
   <div id="header">
     <div id="topnav">
      <ul>       
 
-          <%if(session.getAttribute("username")!=null ){%>    
+          <%if(session.getAttribute("userbean")!=null ){%>    
             <li class="last"><a href="logout">Logout</a>
             <%}else{%>
            <li class="last"><a href="login">Login</a>
            <li><a href="register">Register</a>
             <%}%>
-        <%if(session.getAttribute("username")!=null && session.getAttribute("userrole")!=null ){%>  
-        <%String userrole = (String)session.getAttribute("userrole");%>
+            <% UserBean userbean = (UserBean)session.getAttribute("userbean");%>
+        <%if(session.getAttribute("userbean")!=null){%>  
+           <% String userrole = userbean.getRole();%>
         <%if(userrole.equals("customer")){%> 
         <li><a href="#"> Member area</a>
           <ul>
@@ -57,11 +59,10 @@ $(function() {
           </ul>
         </li>
         <%}%>
-         
         <li><a href="customer/purchase"> Purchase book </a>
             <%}%>
         <li><a href="browse">Browse a book</a>
-        <li class="active"><a href="home">Homepage</a>
+        <li class="active"><a href="home">HomePage</a>
       </ul>
        
       
@@ -70,8 +71,10 @@ $(function() {
       <h1><a href="index.html"><strong>O</strong>p <strong>B</strong>ookStore</a></h1>
     </div>
         <div>
-            
-            <p>Welcome,</p>
+            <%if(session.getAttribute("userbean")!=null ){%>
+            <% String username = userbean.getUsername();%>
+            <p>Welcome,<%=username%></p>
+            <%}%>
         </div>
     <br class="clear" />
   </div>

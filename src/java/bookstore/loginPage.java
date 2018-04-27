@@ -6,6 +6,7 @@
 package bookstore;
 
 import Models.LoginModel;
+import bookstore.JavaBeans.UserBean;
 import bookstore.dao.userDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,8 +62,9 @@ public class loginPage extends HttpServlet {
             if (valid) {
                 String role = userdao.checkRole(username,dbuser,dbpw,dburl);
                 HttpSession session = request.getSession();
-                session.setAttribute("username",username);
-                session.setAttribute("userrole",role);
+                UserBean userbean = new UserBean(username,password,"customer");
+                session.setAttribute("userbean",userbean);
+//                //session.setAttribute("userrole",role);
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/home.jsp");
                 dis.forward(request, response);
             } else {
