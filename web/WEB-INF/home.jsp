@@ -37,8 +37,9 @@ $(function() {
             <li class="last"><a href="logout">Logout</a>
             <%}else{%>
            <li class="last"><a href="login">Login</a>
+           <li><a href="register">Register</a>
             <%}%>
-        <%if(session.getAttribute("username")!=null ){%>  
+        <%if(session.getAttribute("username")!=null && session.getAttribute("userrole")!=null ){%>  
         <%String userrole = (String)session.getAttribute("userrole");%>
         <%if(userrole.equals("customer")){%> 
         <li><a href="#"> Member area</a>
@@ -66,9 +67,12 @@ $(function() {
       
     </div>
     <div id="logo">
-                  
       <h1><a href="index.html"><strong>O</strong>p <strong>B</strong>ookStore</a></h1>
     </div>
+        <div>
+            
+            <p>Welcome,</p>
+        </div>
     <br class="clear" />
   </div>
 </div>

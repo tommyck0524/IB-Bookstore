@@ -50,12 +50,16 @@ public class loginPage extends HttpServlet {
         PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String dbuser = getServletContext().getInitParameter("dbuser");
+        String dbpw = getServletContext().getInitParameter("dbpw");
+        String dburl = getServletContext().getInitParameter("dburl");
 
         try {
             userDao userdao = new userDao();
-            boolean valid = userdao.userIsValid(username, password);
+            boolean valid = userdao.userIsValid(username, password,dbuser,dbpw,dburl);
+
             if (valid) {
-                String role = userdao.checkRole(username);
+                String role = userdao.checkRole(username,dbuser,dbpw,dburl);
                 HttpSession session = request.getSession();
                 session.setAttribute("username",username);
                 session.setAttribute("userrole",role);

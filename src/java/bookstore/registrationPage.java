@@ -53,13 +53,18 @@ public class registrationPage extends HttpServlet {
         String confirm_password = request.getParameter("confirm_password");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
+        
+        String dbuser = getServletContext().getInitParameter("dbuser");
+        String dbpw = getServletContext().getInitParameter("dbpw");
+        String dburl = getServletContext().getInitParameter("dburl");
 
         try{
         userDao userdao = new userDao();
-        boolean insertSuccess = userdao.insertSuccess(username,password,email);
+        boolean insertSuccess = userdao.insertSuccess(username,password,email,dbuser,dbpw,dburl);
         if (insertSuccess){
                 HttpSession session = request.getSession();
                 session.setAttribute("username",username);
+                session.setAttribute("userrole","customer");
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registerSuccess.jsp");
                 dis.forward(request, response);
         }else{
