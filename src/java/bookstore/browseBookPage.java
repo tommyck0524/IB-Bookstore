@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import bookstore.dao.bookDao;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,7 +41,13 @@ public class browseBookPage extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
                  bookDao bookDao = new bookDao();
-                 List<BookBean> bookList = bookDao.retriveBookList();
+                 BookBean book = new BookBean(1,"HARRY");
+                 BookBean book2 = new BookBean(2,"HARRY2");
+                 
+                 //List<BookBean> bookList = bookDao.retriveBookList();
+                 List<BookBean> bookList = new ArrayList<BookBean>();
+                 bookList.add(book);
+                 bookList.add(book2);
                  request.setAttribute("bookList", bookList);
                  request.setAttribute("test", "test");
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/browse.jsp");

@@ -31,9 +31,7 @@ public class bookDao {
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery("SELECT * FROM book");
             while (rs.next()) {
-            BookBean book = new BookBean();
-            book.setBookId(rs.getInt("bookid"));
-            book.setBookName(rs.getString("bookname"));
+            BookBean book = new BookBean(rs.getInt("bookid"),rs.getString("bookname"));
             booklist.add((book));          
             }
             stmt.close();

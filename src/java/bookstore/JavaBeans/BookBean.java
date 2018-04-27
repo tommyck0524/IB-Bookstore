@@ -13,6 +13,11 @@ public class BookBean {
     private int bookId;
     private String bookName;
 
+    public BookBean (int bookId, String bookName) {
+       setBookId(bookId);
+       setBookName(bookName);
+    }
+    
     public int getBookId() {
         return bookId;
     }
