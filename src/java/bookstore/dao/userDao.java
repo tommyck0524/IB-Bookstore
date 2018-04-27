@@ -17,7 +17,8 @@ import java.sql.Statement;
  * @author hochikeung
  */
 public class userDao {
-    
+
+   
     public boolean userIsValid(String username, String password,String dbuser,String dbpw,String dburl) throws ClassNotFoundException, SQLException {
         Connection con = null;
         ResultSet rs = null;
