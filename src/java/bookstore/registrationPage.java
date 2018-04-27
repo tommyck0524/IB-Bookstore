@@ -7,7 +7,6 @@ package bookstore;
 
 import Models.RegisterModel;
 import bookstore.JavaBeans.UserBean;
-import bookstore.JavaBeans.Users;
 import bookstore.dao.userDao;
 import java.io.IOException;
 import java.io.PrintWriter;
