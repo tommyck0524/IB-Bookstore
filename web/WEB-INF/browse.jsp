@@ -58,7 +58,7 @@
     </div>
     <div id="logo">
                   
-      <h1><a href="index.html"><strong>O</strong>p <strong>B</strong>ookStore</a></h1>
+      <h1><a href="home"><strong>O</strong>p <strong>B</strong>ookStore</a></h1>
     </div>
     <br class="clear" />
   </div>

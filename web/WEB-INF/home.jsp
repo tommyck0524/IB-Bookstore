@@ -82,7 +82,7 @@ $(function() {
     <div class="featured_box">
     
 
-      <img src="images/demo/930x375.gif" alt="" /> </div>
+      <img src="resources/img/slideshow1.jpg" alt="" /> </div>
     <div class="featured_box">
       <
       <img src="images/demo/930x375.gif" alt="" /> </div>
