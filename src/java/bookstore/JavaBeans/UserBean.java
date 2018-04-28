@@ -11,19 +11,20 @@ package bookstore.JavaBeans;
  */
 public class UserBean {
 
+    private String UID;
     private String username;
     private String password;
     private String email;
     private String role;
-    private String address;
 
-    public UserBean(String username, String password, String role) {
+    public UserBean(String UID, String username, String password, String role, String email) {
+        this.UID = UID;
         this.username = username;
         this.password = password;
+        this.email = email;
         this.role = role;
     }
-    
-    
+        
     public String getUsername() {
         return username;
     }
@@ -56,12 +57,12 @@ public class UserBean {
         this.role = role;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUID() {
+        return UID;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(String UID) {
+        this.UID = UID;
     }
     
     

@@ -46,7 +46,7 @@ $(function() {
         <%if(userrole.equals("customer")){%> 
         <li><a href="#"> Member area</a>
           <ul>
-            <li><a href="#"> Request for refund</a></li>
+            <li><a href="refund"> Request for refund</a></li>
             <li><a href="#"> Account information</a></li>
           </ul>
         </li>

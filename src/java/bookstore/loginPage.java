@@ -28,6 +28,7 @@ import javax.servlet.http.HttpSession;
  */
 public class loginPage extends HttpServlet {
 
+        
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -62,13 +63,15 @@ public class loginPage extends HttpServlet {
             if (valid) {
                 String role = userdao.checkRole(username,dbuser,dbpw,dburl);
                 HttpSession session = request.getSession();
-                UserBean userbean = new UserBean(username,password,"customer");
+                String UID = userdao.getAttribute("UID",username,dbuser,dbpw,dburl);
+                String email = userdao.getAttribute("email",username,dbuser,dbpw,dburl);
+                UserBean userbean = new UserBean(UID,username,password,role,email);
                 session.setAttribute("userbean",userbean);
                 //session.setAttribute("userrole",role);
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/home.jsp");
                 dis.forward(request, response);
             } else {
-                RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/error.jsp");
+                RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/loginerror.jsp");
                 dis.forward(request, response);
             }
         } catch (ClassNotFoundException e) {

@@ -96,11 +96,11 @@ xmlns="http://java.sun.com/xml/ns/javaee"
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>refundRequestPage</servlet-name>
-        <url-pattern>/customer/refundRequest</url-pattern>
+        <url-pattern>/refund</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>refundReceiptPage</servlet-name>
-        <url-pattern>/customer/refundReceipt</url-pattern>
+        <url-pattern>/refundReceipt</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>refundRequestAuthorizationPage</servlet-name>

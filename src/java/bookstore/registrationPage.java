@@ -69,7 +69,8 @@ public class registrationPage extends HttpServlet {
         if (insertSuccess){
                 HttpSession session = request.getSession();
                 String userrole = "customer";
-                UserBean userbean = new UserBean(username,password,userrole);
+                String UID = userdao.getAttribute("UID",username,dbuser,dbpw,dburl);
+                UserBean userbean = new UserBean(UID,username,password,userrole,email);
                 session.setAttribute("userbean",userbean);
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registerSuccess.jsp");
                 dis.forward(request, response);
