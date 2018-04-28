@@ -59,7 +59,7 @@ $(function() {
           </ul>
         </li>
         <%}%>
-        <li><a href="customer/purchase"> Purchase book </a>
+        <li><a href="purchase"> Purchase book </a>
             <%}%>
         <li><a href="browse">Browse a book</a>
         <li class="active"><a href="home">HomePage</a>

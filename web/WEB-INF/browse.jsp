@@ -51,7 +51,7 @@
         </li>
         <%}%>
          
-        <li><a href="customer/purchase"> Purchase book </a>
+        <li><a href="purchase"> Purchase book </a>
             <%}%>
         <li class="active"><a href="browse">Browse a book</a>
         <li ><a href="home">Homepage</a>
