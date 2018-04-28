@@ -147,3 +147,5 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 
 #copyright{padding:10px 0;}
 #copyright p{margin:0; padding:0;}
+
+.bot-container {float:left;width:100%;text-align: right;position:relative;right:150px;}
