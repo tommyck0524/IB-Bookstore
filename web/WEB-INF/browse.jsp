@@ -79,43 +79,25 @@
 				<a href="#0">
 					<ul class="cd-slider-wrapper">
 						<li><img src="img/thumb-1.jpg" alt="Preview image"></li>
-						<li class="selected"><img class="product" src="https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg" alt="Preview image"></li>
+						<li class="selected"><img class="product" src=${book.picture}></li>
 						<li><img src="img/thumb-3.jpg" alt="Preview image"></li>
 					</ul>
 				</a>
 
-				<div class="cd-customization">
-					<div class="color selected-2" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2 active">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div>
-					
-					<div class="size" data-type="select">
-						<ul>
-							<li class="small active">Small</li>
-							<li class="medium">Medium</li>
-							<li class="large">Large</li>
-						</ul>
-					</div>
-
-					<button class="add-to-cart">
-						<em>Add to Cart</em>
-						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-						</svg>
-					</button>
-				</div> <!-- .cd-customization -->
+				
 
 				<button class="cd-customization-trigger">Customize</button>
 			</div> <!-- .cd-single-item -->
 
 			<div class="cd-item-info">
 				<b>${book.bookName}</b>
-				<em>$9.99</em>
+				<em> $${book.price}</em>
 			</div> <!-- cd-item-info -->
+                        <form action="browse" method="post">
+                            <input type="hidden" name ="bookname" value=${book.bookName}>
+                            <p> quantity<input type="text" name="quantity"></p>
+                            <button type="submit" value="add to chart"> add to chart </button>
+                        </form>
 		</li>
     </c:forEach>
       
