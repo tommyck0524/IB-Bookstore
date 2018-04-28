@@ -43,7 +43,6 @@ public class registrationPage extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/register.jsp");
         dis.forward(request, response);
-
     }
 
     @Override
@@ -54,12 +53,16 @@ public class registrationPage extends HttpServlet {
         String password = request.getParameter("password");
         String confirm_password = request.getParameter("confirm_password");
         String email = request.getParameter("email");
-        String address = request.getParameter("address");
         
         String dbuser = getServletContext().getInitParameter("dbuser");
         String dbpw = getServletContext().getInitParameter("dbpw");
         String dburl = getServletContext().getInitParameter("dburl");
 
+       if (!password.equals(confirm_password)) {
+            RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
+            dis.forward(request, response);
+        }
+        
         try{
         userDao userdao = new userDao();
         boolean insertSuccess = userdao.insertSuccess(username,password,email,dbuser,dbpw,dburl);

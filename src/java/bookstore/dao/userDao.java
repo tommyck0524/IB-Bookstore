@@ -42,7 +42,7 @@ public class userDao {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(dburl, dbuser, dbpw);
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            rs = stmt.executeQuery("SELECT * FROM [roles]");
+            rs = stmt.executeQuery("SELECT * FROM [users]");
             while (rs != null && rs.next() != false) {
                 if (rs.getString("username").equals(username))
                     return rs.getString("role");
@@ -57,14 +57,12 @@ public class userDao {
         String role = "customer";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=TestDB", "sa", "Tommy6565,.");
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO [users] ([username], [password]) VALUES (?, ?)",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO [users] ([username], [password], [role], [email]) VALUES (?,?,?,?)",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             pstmt.setString(1,username);
             pstmt.setString(2,password);
+            pstmt.setString(3,role);
+            pstmt.setString(4,email);
             pstmt.executeUpdate();
-            PreparedStatement pstmt1 = con.prepareStatement("INSERT INTO [roles] ([username], [role]) VALUES (?, ?)",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            pstmt1.setString(1,username);
-            pstmt1.setString(2,role);
-            pstmt1.executeUpdate();
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery("SELECT * FROM [users]");
             while (rs != null && rs.next() != false) {

@@ -21,7 +21,6 @@
          <input type="password" name="password" placeholder="password">
          <input type="password" name="confirm_password" placeholder="confirm_password">
          <input type="text" name="email" placeholder="email">
-         <input type="text" name="address" placeholder="address">
          <button type="submit" value="Register" >Register</button>
         </form>
         
