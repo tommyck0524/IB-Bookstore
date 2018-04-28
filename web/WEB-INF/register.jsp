@@ -15,16 +15,17 @@
     <body>
         <div class="login-page">
         <div class="form">
-        <form class="register-form">
-            <h4> Register <h4>
+        <h4> Register </h4>
+        <form action="register" class="register-form" method="POST">
             <input type="text" name="username" placeholder="username">
          <input type="password" name="password" placeholder="password">
          <input type="password" name="confirm_password" placeholder="confirm_password">
          <input type="text" name="email" placeholder="email">
          <input type="text" name="address" placeholder="address">
-        <button> Register </button>
-    
+         <button type="submit" value="Register" >Register</button>
         </form>
         
+                </div>
+        </div>
     </body>
 </html>
