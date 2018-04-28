@@ -23,7 +23,6 @@ public class userDao {
         Connection con = null;
         ResultSet rs = null;
         Statement stmt = null;
-
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(dburl, dbuser, dbpw);
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -34,6 +33,26 @@ public class userDao {
             }
             return false;
     }
+    
+     public String getAttribute (String attribute,String username,String dbuser,String dbpw,String dburl) throws ClassNotFoundException, SQLException {
+        Connection con = null;
+        ResultSet rs = null;
+        Statement stmt = null;
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(dburl, dbuser, dbpw);
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = stmt.executeQuery("SELECT * FROM [users]");
+            while (rs != null && rs.next() != false) {
+                if (rs.getString("username").equals(username)){
+                    if(attribute.equals("UID"))
+                     return rs.getString("UID");
+                    else if(attribute.equals("email"))
+                        return rs.getString("email");
+                }
+            }
+            return null;
+    }
+     
      
     public String checkRole(String username,String dbuser,String dbpw,String dburl) throws ClassNotFoundException, SQLException {
         Connection con = null;
