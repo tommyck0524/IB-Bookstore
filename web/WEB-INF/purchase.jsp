@@ -93,10 +93,17 @@
                                                                                       <c:forEach var="item" items="${transactionList}">
                                                                                       <tr class="row100 body">
                                                                                               <td class="cell100 column1">${item.bookName}</td>
-                                                                                              <td class="cell100 column2">Boxing</td>
-                                                                                              <td class="cell100 column3">9:00 AM - 11:00 AM</td>
-                                                                                              <td class="cell100 column4">Aaron Chapman</td>
-                                                                                              <td class="cell100 column5">10</td>
+                                                                                              <td class="cell100 column2">${item.price}</td>
+                                                                                              <td class="cell100 column3">${item.purchaseQuantity}</td>
+                                                                                              <td class="cell100 column4"> ${item.total}</td>
+                                                                                              <td class="cell100 column5">
+                                                                                                  <form action="purchase" method="post">
+                                                                                                      <input type="hidden" name="transactionId" value=${item.transactionId}>
+                                                                                                      <input type="hidden" name="cancel" value="1">
+                                                                                                      <button type="submit" value="cancel" >cancel</button>
+                                                                                                  </form>
+                                                                                                  
+                                                                                              </td>
                                                                                               
                                                                                       </tr>
                                                                                        </c:forEach>

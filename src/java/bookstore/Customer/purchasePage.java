@@ -11,6 +11,8 @@ import bookstore.dao.bookDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,6 +40,20 @@ public class purchasePage extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String cancel = request.getParameter("cancel");
+        if(cancel!=null && cancel.equals("1")) {
+            String transactionId_parm = request.getParameter("transactionId");
+            int transactionId = Integer.parseInt(transactionId_parm);
+            HttpSession session = request.getSession();
+            List<Transaction> transactionList = (List<Transaction>) session.getAttribute("transactionList");
+            Iterator<Transaction> itr = transactionList.iterator();
+            while( itr.hasNext() ){
+                Transaction tr = itr.next();
+                if(tr.getTransactionId()==transactionId){
+                   itr.remove();
+                }
+            }
+        }
             try {
                     RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/purchase.jsp");
                     dis.forward(request, response);

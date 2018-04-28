@@ -10,12 +10,43 @@ package bookstore.JavaBeans;
  * @author chuntkwan2
  */
 public class Transaction {
-   private String bookName;
-   private String purchaseQuantity;
+   private int transactionId;
+   private String bookName;  
+   private double price;
+   private int purchaseQuantity;
+   private double total;
 
-    public Transaction(String bookName, String purchaseQuantity) {
+    public Transaction(int transactionId, String bookName, double price, int purchaseQuantity) {
+        this.transactionId = transactionId;
         this.bookName = bookName;
+        this.price = price;
         this.purchaseQuantity = purchaseQuantity;
+        this.total = price*purchaseQuantity;
+    }
+
+    public int getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getBookName() {
@@ -26,11 +57,11 @@ public class Transaction {
         this.bookName = bookName;
     }
 
-    public String getPurchaseQuantity() {
+    public int getPurchaseQuantity() {
         return purchaseQuantity;
     }
 
-    public void setPurchaseQuantity(String purchaseQuantity) {
+    public void setPurchaseQuantity(int purchaseQuantity) {
         this.purchaseQuantity = purchaseQuantity;
     }
     

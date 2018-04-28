@@ -40,16 +40,21 @@ public class browseBookPage extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String purchaseQuantity = request.getParameter("quantity");
         String bookName = request.getParameter("bookname");
-        if(bookName!=null && purchaseQuantity!=null) {
+        String price_param = request.getParameter("price");
+        
+        String purchaseQuantity_param = request.getParameter("quantity");
+     
+        if(bookName!=null && bookName!="" && purchaseQuantity_param!=null && !(purchaseQuantity_param.equals(""))) {
+            Double price =  Double.parseDouble(price_param); 
+            int purchaseQuantity = Integer.parseInt(purchaseQuantity_param); 
              HttpSession session = request.getSession();
              List<Transaction> transactionList = (List<Transaction>) session.getAttribute("transactionList");
              if(transactionList==null) {
                   transactionList = new ArrayList<>();
              } 
-             
-                 Transaction tr = new Transaction(bookName,purchaseQuantity);
+                int transactionId = transactionList.size()+1;
+                 Transaction tr = new Transaction(transactionId,bookName,price,purchaseQuantity);
                  transactionList.add(tr);
              
              

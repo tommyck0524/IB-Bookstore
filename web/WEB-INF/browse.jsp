@@ -95,6 +95,7 @@
 			</div> <!-- cd-item-info -->
                         <form action="browse" method="post">
                             <input type="hidden" name ="bookname" value=${book.bookName}>
+                            <input type="hidden" name ="price" value=${book.price}> 
                             <p> quantity<input type="text" name="quantity"></p>
                             <button type="submit" value="add to chart"> add to chart </button>
                         </form>
