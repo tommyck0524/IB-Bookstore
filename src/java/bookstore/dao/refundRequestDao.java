@@ -39,5 +39,16 @@ public class refundRequestDao {
             }
                 return RRList;
     }
+     public void insertRefundRequest(String PID,String dbuser, String dbpw, String dburl) throws ClassNotFoundException, SQLException {
+            Connection con = null;
+            ResultSet rs = null;
+            Statement stmt = null;
+            String sqlStatement = "INSERT INTO [refundRequest] VALUES(?)";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(dburl, dbuser, dbpw);
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstmt.setString(1,PID);
+            pstmt.executeUpdate();
+    }
     
 }
