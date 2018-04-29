@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author hochikeung
  */
-public class purchasePage extends HttpServlet {
+public class billPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
