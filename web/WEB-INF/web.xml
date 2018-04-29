@@ -104,15 +104,15 @@ xmlns="http://java.sun.com/xml/ns/javaee"
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>refundRequestAuthorizationPage</servlet-name>
-        <url-pattern>/manager/refundAuth</url-pattern>
+        <url-pattern>/refundAuth</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>bookManagementPage</servlet-name>
-        <url-pattern>/manager/bookManagement</url-pattern>
+        <url-pattern>/bookManagement</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>bookDetailsPage</servlet-name>
-        <url-pattern>/manager/bookDetails</url-pattern>
+        <url-pattern>/bookDetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>logoutPage</servlet-name>

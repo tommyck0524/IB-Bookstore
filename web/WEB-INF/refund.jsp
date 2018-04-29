@@ -115,9 +115,12 @@
 
 			<div class="cd-item-info">
                             
+                            <form method="POST" action="refundReceipt">
 				PID:${purchase.PID}
 				User ID:${purchase.UID}
                                 BookID:${purchase.BID}
+                                <input type="submit" value="Refund">
+                                </form>
 			</div> <!-- cd-item-info -->
 		</li>
     </c:forEach>
