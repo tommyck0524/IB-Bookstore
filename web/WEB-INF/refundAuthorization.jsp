@@ -116,7 +116,8 @@
                             <form method="POST" action="refundAuthConfirm">
                                 Request ID:${request.RID}
 				Purchase ID:${request.PID}
-                                <input type="submit" value="Refund">
+                                <input type="hidden" name="RID" value=${request.RID} >
+                                <input type="submit" value="Authorize">
                                 </form>
 			</div> <!-- cd-item-info -->
 		</li>

@@ -50,5 +50,31 @@ public class refundRequestDao {
             pstmt.setString(1,PID);
             pstmt.executeUpdate();
     }
+     
+       public String getRID(String PID,String dbuser, String dbpw, String dburl) throws ClassNotFoundException, SQLException {
+            Connection con = null;
+            ResultSet rs = null;
+            Statement stmt = null;
+            String sqlStatement = "SELECT * FROM [refundRequest]";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(dburl, dbuser, dbpw);
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = pstmt.executeQuery();
+            while (rs != null && rs.next() != false) {
+                if(rs.getString("PID").equals(PID))
+                return rs.getString("RID");
+            }
+            return null;
+    }
+       
+       public void deleteRequest(String RID,String dbuser, String dbpw, String dburl) throws ClassNotFoundException, SQLException {
+            Connection con = null;
+            String sqlStatement = "DELETE FROM [refundRequest] where RID = ?";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection(dburl, dbuser, dbpw);
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstmt.setString(1,RID);
+            pstmt.executeUpdate();
+    }
     
 }
