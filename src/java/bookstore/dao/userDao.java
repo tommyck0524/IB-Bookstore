@@ -106,4 +106,26 @@ public class userDao {
             }
                 return "noDup";
     }
+    
+    public int getUserIdByUserName(String username) {
+        int userId = 0;
+        try {
+            java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
+            java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String dbLoginId = "aiad022"; // database login ID 
+            String dbPwd = "aiad022"; // database password 
+            Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);       
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM users where username = ?");               
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            userId = rs.getInt("UID");
+         } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        } finally {
+           
+        }
+        return userId;
+    }
 }

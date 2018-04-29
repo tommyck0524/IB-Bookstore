@@ -8,6 +8,8 @@ package bookstore.Customer;
 import bookstore.JavaBeans.BookBean;
 import bookstore.JavaBeans.Transaction;
 import bookstore.dao.bookDao;
+import bookstore.dao.purchaseHistoryDao;
+import bookstore.dao.userDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -45,11 +47,20 @@ public class ConfirmBillPage extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             List<Transaction> trs = (List<Transaction>) session.getAttribute("transactionList");
-            double total = 0;
-            for (Transaction tr : trs) {
-                total = total + tr.getTotal();
+            purchaseHistoryDao pr = new purchaseHistoryDao();
+            userDao user = new userDao();
+            bookDao book = new bookDao();
+            //gather transaction info
+            String username = (String)session.getAttribute("username");
+            int userId = user.getUserIdByUserName(username);
+            int refund = 1;
+            //
+            for (Transaction tr : trs) {               
+                int bookId = book.getBookIdByBookName(tr.getBookName());
+                int quantity = tr.getPurchaseQuantity();             
+                double total = tr.getTotal();
+                pr.insertPurchaseRecord(userId,bookId,quantity,refund,total);
             }
-            request.setAttribute("total", total);
             RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/billConfirm.jsp");
             dis.forward(request, response);
         } catch (Exception e) {
