@@ -21,14 +21,27 @@ import java.util.logging.Logger;
  * @author hochikeung
  */
 public class purchaseHistoryDao {
+     private String url;
+    private String dbLoginId;
+    private String dbPwd;
+
+    public purchaseHistoryDao(String url, String dbLoginId, String dbPwd) {
+        this.url = url;
+        this.dbLoginId = dbLoginId;
+        this.dbPwd = dbPwd;
+    }
+   
+
+   
     
-    public ArrayList<PurchaseBean> getPBList(String UID,String dbuser, String dbpw, String dburl) throws ClassNotFoundException, SQLException {
+    
+    public ArrayList<PurchaseBean> getPBList(String UID) throws ClassNotFoundException, SQLException {
             Connection con = null;
             ResultSet rs = null;
             Statement stmt = null;
             String sqlStatement = "SELECT * FROM [purchaseHistory] WHERE [UID] = ? AND [refund]= 1";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(dburl, dbuser, dbpw);
+            con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);
             PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             pstmt.setString(1,UID);
             rs = pstmt.executeQuery();

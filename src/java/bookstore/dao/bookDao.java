@@ -21,14 +21,23 @@ import java.util.ArrayList;
  */
 public class bookDao {
 
+    private String dbLoginId;
+    private String dbPwd;
+    private String url;
+
+    public bookDao(String dbLoginId, String dbPwd, String url) {
+        this.dbLoginId = dbLoginId;
+        this.dbPwd = dbPwd;
+        this.url = url;
+    }
+
     public List<BookBean> retriveBookList() {
         List<BookBean> booklist = new ArrayList<>();
         try {
-
-            java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
+            java.lang.String url = this.url;
+            String dbLoginId = this.dbLoginId; // database login ID 
+            String dbPwd = this.dbPwd; // database password 
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbLoginId = "aiad022"; // database login ID 
-            String dbPwd = "aiad022"; // database password 
             Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery("SELECT * FROM book");
@@ -52,11 +61,8 @@ public class bookDao {
     public List<BookBean> getSelectedBookInfo(String bookName) {
         List<BookBean> booklist = new ArrayList<>();
         try {
-            java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbLoginId = "aiad022"; // database login ID 
-            String dbPwd = "aiad022"; // database password 
-            Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
+            Connection con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM book where bookName = ?");
             pstmt.setString(1, bookName);
             ResultSet rs = pstmt.executeQuery();

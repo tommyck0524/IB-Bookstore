@@ -71,8 +71,8 @@ public class registrationPage extends HttpServlet {
         }
 
         try {
-            userDao userdao = new userDao();
-            String infoDup = userdao.checkInputDuplicate(username, email, dbuser, dbpw, dburl);
+            userDao userdao = new userDao(dburl,dbuser,dbpw);
+            String infoDup = userdao.checkInputDuplicate(username, email);
             if(infoDup.equals("usernameDup")){
                 session.setAttribute("error","usernameDup");
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
@@ -82,10 +82,10 @@ public class registrationPage extends HttpServlet {
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
                 dis.forward(request, response);
             } else if (infoDup.equals("noDup")){      
-            boolean insertSuccess = userdao.insertSuccess(username, password, email, dbuser, dbpw, dburl);
+            boolean insertSuccess = userdao.insertSuccess(username, password, email);
             if (insertSuccess) {
                 String userrole = "customer";
-                String UID = userdao.getAttribute("UID", username, dbuser, dbpw, dburl);
+                String UID = userdao.getAttribute("UID", username);
                 UserBean userbean = new UserBean(UID, username, password, userrole, email);
                 session.setAttribute("userbean", userbean);
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registerSuccess.jsp");

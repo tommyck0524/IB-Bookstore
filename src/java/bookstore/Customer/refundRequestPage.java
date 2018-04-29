@@ -50,8 +50,8 @@ public class refundRequestPage extends HttpServlet {
         String UID = ub.getUID();
         ArrayList <PurchaseBean> PBList = new ArrayList<PurchaseBean>();
         try{
-        purchaseHistoryDao phd = new purchaseHistoryDao();
-        PBList = phd.getPBList(UID,dbuser,dbpw,dburl);
+        purchaseHistoryDao phd = new purchaseHistoryDao(dburl,dbuser,dbpw);
+        PBList = phd.getPBList(UID);
         session.setAttribute("PBList",PBList);
         RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refund.jsp");
         dis.forward(request, response);

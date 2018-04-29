@@ -44,9 +44,9 @@ public class refundReceiptPage extends HttpServlet {
         HttpSession session = request.getSession();
         String PID = request.getParameter("PID");
         try{
-        refundRequestDao rrd = new refundRequestDao();
-        rrd.insertRefundRequest(PID,dbuser,dbpw,dburl);
-        String RID = rrd.getRID(PID, dbuser, dbpw, dburl);
+        refundRequestDao rrd = new refundRequestDao(dburl,dbuser,dbpw);
+        rrd.insertRefundRequest(PID);
+        String RID = rrd.getRID(PID);
         RefundRequestBean rrb = new RefundRequestBean(RID,PID);
         session.setAttribute("rrb",rrb);
         RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refundReceipt.jsp");

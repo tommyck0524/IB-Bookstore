@@ -39,17 +39,21 @@ public class bookManagementPage extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String dbuser = getServletContext().getInitParameter("dbuser");
+        String dbpw = getServletContext().getInitParameter("dbpw");
+        String dburl = getServletContext().getInitParameter("dburl");
+        bookDao book = new bookDao(dbuser, dbpw, dburl);
         String action = request.getParameter("action");
         String bookName = request.getParameter("bookname");
         String quantity = request.getParameter("quantity");
         String description = request.getParameter("description");
         String price = request.getParameter("price");
         String picture = request.getParameter("picture");
-        bookDao book = new bookDao();
+        
         if (action != null && action.equals("add")) {
-            
+
             book.addBook(bookName, quantity, description, price, picture);
-            
+
         }
         if (action != null && action.equals("modify")) {
             book.updateBookInfo(bookName, quantity, description, price, picture);
@@ -58,11 +62,11 @@ public class bookManagementPage extends HttpServlet {
             book.deleteBook(bookName);
         }
         try {
-            bookDao bookDao = new bookDao();
+            ;
             //BookBean book = new BookBean(1,"HARRY", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg" );
             //BookBean book2 = new BookBean(2,"HARRY2", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg");
 
-            List<BookBean> bookList = bookDao.retriveBookList();
+            List<BookBean> bookList = book.retriveBookList();
             //List<BookBean> bookList = new ArrayList<BookBean>();
             //bookList.add(book);
             //bookList.add(book2);
@@ -70,11 +74,11 @@ public class bookManagementPage extends HttpServlet {
             request.setAttribute("test", "test");
             RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/bookManagement.jsp");
             dis.forward(request, response);
-            
+
         } catch (Exception e) {
             out.println("<div style='color: red'>" + e.toString() + "</div>");
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

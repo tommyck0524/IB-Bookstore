@@ -46,8 +46,8 @@ public class refundRequestAuthorizationPage extends HttpServlet {
         ArrayList <RefundRequestBean> RRList = new ArrayList<RefundRequestBean>();
         HttpSession session = request.getSession();
         try{
-        refundRequestDao rrd = new refundRequestDao();
-        RRList = rrd.getRRList(dbuser,dbpw,dburl);
+        refundRequestDao rrd = new refundRequestDao(dburl,dbuser,dbpw);
+        RRList = rrd.getRRList();
         session.setAttribute("RRList",RRList);
         RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refundAuthorization.jsp");
         dis.forward(request, response);

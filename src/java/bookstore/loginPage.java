@@ -66,14 +66,14 @@ public class loginPage extends HttpServlet {
             
 
         try {
-            userDao userdao = new userDao();
-            boolean valid = userdao.userIsValid(username, password,dbuser,dbpw,dburl);
+            userDao userdao = new userDao(dburl,dbuser,dbpw);
+            boolean valid = userdao.userIsValid(username, password);
 
             if (valid) {
-                String role = userdao.checkRole(username,dbuser,dbpw,dburl);
+                String role = userdao.checkRole(username);
                 HttpSession session = request.getSession();
-                String UID = userdao.getAttribute("UID",username,dbuser,dbpw,dburl);
-                String email = userdao.getAttribute("email",username,dbuser,dbpw,dburl);
+                String UID = userdao.getAttribute("UID",username);
+                String email = userdao.getAttribute("email",username);
                 UserBean userbean = new UserBean(UID,username,password,role,email);
                 session.setAttribute("userbean",userbean);
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/home.jsp");

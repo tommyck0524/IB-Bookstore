@@ -45,21 +45,25 @@ public class ConfirmBillPage extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
+            String dbuser = getServletContext().getInitParameter("dbuser");
+            String dbpw = getServletContext().getInitParameter("dbpw");
+            String dburl = getServletContext().getInitParameter("dburl");
+
             HttpSession session = request.getSession();
             List<Transaction> trs = (List<Transaction>) session.getAttribute("transactionList");
-            purchaseHistoryDao pr = new purchaseHistoryDao();
-            userDao user = new userDao();
-            bookDao book = new bookDao();
+            purchaseHistoryDao pr = new purchaseHistoryDao(dburl,dbuser,dbpw);
+            userDao user = new userDao(dburl,dbuser,dbpw);
+            bookDao book = new bookDao(dbuser, dbpw, dburl);
             //gather transaction info
-            String username = (String)session.getAttribute("username");
+            String username = (String) session.getAttribute("username");
             int userId = user.getUserIdByUserName(username);
             int refund = 1;
             //
-            for (Transaction tr : trs) {               
+            for (Transaction tr : trs) {
                 int bookId = book.getBookIdByBookName(tr.getBookName());
-                int quantity = tr.getPurchaseQuantity();             
+                int quantity = tr.getPurchaseQuantity();
                 double total = tr.getTotal();
-                pr.insertPurchaseRecord(userId,bookId,quantity,refund,total);
+                pr.insertPurchaseRecord(userId, bookId, quantity, refund, total);
             }
             RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/billConfirm.jsp");
             dis.forward(request, response);
