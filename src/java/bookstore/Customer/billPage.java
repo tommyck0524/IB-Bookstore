@@ -43,6 +43,13 @@ public class billPage extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
+            HttpSession session = request.getSession();
+            List<Transaction> trs = (List<Transaction>) session.getAttribute("transactionList");
+            double total = 0;
+            for (Transaction tr : trs) {
+                total = total + tr.getTotal();
+            }
+            request.setAttribute("total", total);
             RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/bill.jsp");
             dis.forward(request, response);
         } catch (Exception e) {

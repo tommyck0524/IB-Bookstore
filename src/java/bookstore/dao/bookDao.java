@@ -73,5 +73,27 @@ public class bookDao {
         }
         return booklist;
     }
+    
+    public int getBookIdByBookName(String bookName) {
+        int bookId = 0;
+        try {
+            java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
+            java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String dbLoginId = "aiad022"; // database login ID 
+            String dbPwd = "aiad022"; // database password 
+            Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);       
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM book where bookName = ?");               
+            pstmt.setString(1, bookName);
+            ResultSet rs = pstmt.executeQuery();
+            bookId = rs.getInt("bookid");
+         } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        } finally {
+           
+        }
+        return bookId;
+    }
      
 }

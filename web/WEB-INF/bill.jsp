@@ -65,12 +65,12 @@
         </div>
         <div class="wrapper col3">
             <div class="container">  
-                <form id="contact" action="" method="post">
+                <form id="contact" action="confirmBill" method="post">
        
                     <c:forEach var="item" items="${transactionList}">
 
                     </c:forEach>
-                    <h3>Total:</h3>
+                    <h3>Total:${total}</h3>
                     <h4>Please enter information below</h4>
                     <fieldset>
                         <input placeholder="Name" name="name" type="text" tabindex="1" required autofocus value=${name}>
@@ -82,7 +82,7 @@
                         <input placeholder="Credit card number" type="tel" tabindex="3" required>
                     </fieldset>
                     <fieldset>
-                        <input placeholder="Your Phone number (optional)" type="url" tabindex="4" required>
+                        <input placeholder="Your Phone number (optional)" type="text" tabindex="4" >
                     </fieldset>
                     <fieldset>
                         <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
@@ -90,7 +90,7 @@
                     <fieldset>
                         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
                     </fieldset>
-                    
+                    <input type="hidden" name="email" value=${email}
                 </form>
             </div>
 

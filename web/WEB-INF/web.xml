@@ -68,6 +68,10 @@
         <servlet-name>refundAuthConfirm</servlet-name>
         <servlet-class>bookstore.Manager.refundAuthConfirm</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>ConfirmBillPage</servlet-name>
+        <servlet-class>bookstore.Customer.ConfirmBillPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homePage</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -123,6 +127,10 @@
     <servlet-mapping>
         <servlet-name>refundAuthConfirm</servlet-name>
         <url-pattern>/refundAuthConfirm</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ConfirmBillPage</servlet-name>
+        <url-pattern>/confirmBill</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

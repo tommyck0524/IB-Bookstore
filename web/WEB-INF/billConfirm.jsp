@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Your request has been done! Confirmation email has been sent to ${email}</h1>
+        <a href="home"> click here to go back to home page <a/>
     </body>
 </html>
