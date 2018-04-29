@@ -53,39 +53,55 @@ public class registrationPage extends HttpServlet {
         String password = request.getParameter("password");
         String confirm_password = request.getParameter("confirm_password");
         String email = request.getParameter("email");
-        
+
         String dbuser = getServletContext().getInitParameter("dbuser");
         String dbpw = getServletContext().getInitParameter("dbpw");
         String dburl = getServletContext().getInitParameter("dburl");
+        HttpSession session = request.getSession();
 
-       if (!password.equals(confirm_password)) {
+        if (!password.equals(confirm_password)) {
+            session.setAttribute("error","differentpw");
+            RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
+            dis.forward(request, response);
+            
+        } else if (password == "" | confirm_password == "" | email == "" | username == "") {
+            session.setAttribute("error","blankfield");
             RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
             dis.forward(request, response);
         }
-        
-        try{
-        userDao userdao = new userDao();
-        boolean insertSuccess = userdao.insertSuccess(username,password,email,dbuser,dbpw,dburl);
-        if (insertSuccess){
-                HttpSession session = request.getSession();
-                String userrole = "customer";
-                String UID = userdao.getAttribute("UID",username,dbuser,dbpw,dburl);
-                UserBean userbean = new UserBean(UID,username,password,userrole,email);
-                session.setAttribute("userbean",userbean);
-                RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registerSuccess.jsp");
-                dis.forward(request, response);
-        }else{
+
+        try {
+            userDao userdao = new userDao();
+            String infoDup = userdao.checkInputDuplicate(username, email, dbuser, dbpw, dburl);
+            if(infoDup.equals("usernameDup")){
+                session.setAttribute("error","usernameDup");
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
                 dis.forward(request, response);
-        }
-        }catch (ClassNotFoundException e) {
+            } else if (infoDup.equals("emailDup")){
+                session.setAttribute("error","emailDup");
+                RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
+                dis.forward(request, response);
+            } else if (infoDup.equals("noDup")){      
+            boolean insertSuccess = userdao.insertSuccess(username, password, email, dbuser, dbpw, dburl);
+            if (insertSuccess) {
+                String userrole = "customer";
+                String UID = userdao.getAttribute("UID", username, dbuser, dbpw, dburl);
+                UserBean userbean = new UserBean(UID, username, password, userrole, email);
+                session.setAttribute("userbean", userbean);
+                RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registerSuccess.jsp");
+                dis.forward(request, response);
+            } else {
+                session.setAttribute("error","errorRegister");
+                RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/registererror.jsp");
+                dis.forward(request, response);
+            }
+            }
+        } catch (ClassNotFoundException e) {
             out.println("<div style='color: red'>" + e.toString() + "</div>");
         } catch (SQLException e) {
             out.println("<div style='color: red'>" + e.toString() + "</div>");
         }
-       
 
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -111,8 +127,6 @@ public class registrationPage extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-
     /**
      * Returns a short description of the servlet.
      *

@@ -1,27 +1,45 @@
 <%-- 
-    Document   : registererror
-    Created on : Apr 26, 2018, 3:44:36 PM
+    Document   : register
+    Created on : Apr 22, 2018, 2:41:47 PM
     Author     : hochikeung
 --%>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Register</title>
+        <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
     <body>
-        <h1>The inputs are incorrect. Please try again.</h1>
-          <fieldset>
-            <legend>Please fill in the information below to register</legend>
-            <form method="POST" action="register">
-            <p>Username <input type="text" name="username"></p>
-            <p>Password <input type="password" name="password"></p>
-            <p>Confirm password <input type="password" name="confirm_password"></p>
-            <p>Email address <input type="text" name="email"></p>
-            <p>Address <input type="text" name="address"></p>
-            </form>
-        </fieldset>
+        <div class="login-page">
+            <div class="form">
+                <c:choose>
+                <c:when test="${error=='usernameDup'}">
+                    <p>This username has already been used. Please choose another one.</p>
+                </c:when>
+                <c:when test="${error=='emailDup'}">
+                    <p>This email has already been used. Please choose another one.</p>
+                </c:when>
+                <c:when test="${error=='blankfield'}">
+                    <p>Not all fields are filled in. Please check again.</p>
+                </c:when>
+                <c:when test="${error=='differentpw'}">
+                    <p>The confirm password is not consistent with the password. Please enter again.</p>
+                </c:when>
+                <c:otherwise>
+                </c:otherwise>
+                </c:choose>
+        <form action="register" class="register-form" method="POST">
+            <input type="text" name="username" placeholder="username">
+         <input type="password" name="password" placeholder="password">
+         <input type="password" name="confirm_password" placeholder="confirm_password">
+         <input type="text" name="email" placeholder="email">
+         <button type="submit" value="Register" >Register</button>
+        </form>
+        
+                </div>
+        </div>
     </body>
 </html>

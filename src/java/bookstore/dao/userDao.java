@@ -69,7 +69,7 @@ public class userDao {
             return "default";
     }
     
-    public boolean insertSuccess(String username, String password, String email,String dbuser,String dbpw,String dburl) throws ClassNotFoundException, SQLException {
+     public boolean insertSuccess(String username, String password, String email,String dbuser,String dbpw,String dburl) throws ClassNotFoundException, SQLException {
         Connection con;
         ResultSet rs;
         Statement stmt;
@@ -89,5 +89,21 @@ public class userDao {
                      return true;
             }
                 return false;
+    }
+    
+    public String checkInputDuplicate(String username, String email,String dbuser,String dbpw,String dburl) throws ClassNotFoundException, SQLException {
+        Connection con;
+        ResultSet rs;
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=TestDB", "sa", "Tommy6565,.");
+            PreparedStatement pstmt = con.prepareStatement("SELECT [username], [email] FROM [users]",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rs = pstmt.executeQuery();
+            while (rs != null && rs.next() != false) {
+                if (rs.getString("username").equals(username))
+                     return "usernameDup";
+                else if(rs.getString("email").equals(email))
+                     return "emailDup";
+            }
+                return "noDup";
     }
 }
