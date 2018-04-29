@@ -62,14 +62,14 @@ public class browseBookPage extends HttpServlet {
              session.setAttribute("transactionList", transactionList);
         }
             try {
-                     //bookDao bookDao = new bookDao();
-                     BookBean book = new BookBean(1,"HARRY", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg" );
-                     BookBean book2 = new BookBean(2,"HARRY2", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg");
+                     bookDao bookDao = new bookDao();
+                     //BookBean book = new BookBean(1,"HARRY", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg" );
+                     //BookBean book2 = new BookBean(2,"HARRY2", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg");
 
-                     //List<BookBean> bookList = bookDao.retriveBookList();
-                     List<BookBean> bookList = new ArrayList<BookBean>();
-                     bookList.add(book);
-                     bookList.add(book2);
+                     List<BookBean> bookList = bookDao.retriveBookList();
+                     //List<BookBean> bookList = new ArrayList<BookBean>();
+                     //bookList.add(book);
+                     //bookList.add(book2);
                      request.setAttribute("bookList", bookList);
                      request.setAttribute("test", "test");
                     RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/browse.jsp");

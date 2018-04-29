@@ -119,9 +119,8 @@
                         </div>
                 </div>
         <div class="bot-container">
-        <p> gff </p>
-        <form action="purchase" method="post">
-              <button type="submit" value="Submit">Submit</button>
+        <form action="bill" method="post">
+              <button class="button" type="submit" value="Submit">Purchase now</button>
         </form>
     </div>
             </div>

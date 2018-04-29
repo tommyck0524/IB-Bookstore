@@ -92,7 +92,7 @@ xmlns="http://java.sun.com/xml/ns/javaee"
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>billPage</servlet-name>
-        <url-pattern>/customer/bill</url-pattern>
+        <url-pattern>/bill</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>refundRequestPage</servlet-name>
