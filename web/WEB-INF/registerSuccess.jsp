@@ -1,6 +1,6 @@
 <%-- 
-    Document   : registerSuccess
-    Created on : Apr 26, 2018, 2:37:55 PM
+    Document   : register
+    Created on : Apr 22, 2018, 2:41:47 PM
     Author     : hochikeung
 --%>
 
@@ -9,10 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registration Success Page</title>
+        <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
     <body>
-        <h1>Registration successful!</h1>
-        <a href="home">Click here to access home page</a>
+        <div class="login-page">
+        <div class="form">
+        <h4> Registration Successful!</h4>
+        <a href="home">
+        <button>Return to Home Page</button>
+        </a>
+                </div>
+        </div>
     </body>
 </html>

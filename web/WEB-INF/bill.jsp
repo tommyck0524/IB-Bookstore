@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IB_Bookstore</title>
+        <title>Bill</title>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <link rel="stylesheet" href="resources/styles/layout.css" type="text/css" />
         <link rel="stylesheet" type="text/css" href="resources/styles/bill.css">

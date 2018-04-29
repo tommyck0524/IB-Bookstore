@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Bill Confirmation</title>
     </head>
     <body>
         <h1>Your request has been done! Confirmation email has been sent to ${email}</h1>
