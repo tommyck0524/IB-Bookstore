@@ -65,6 +65,7 @@ public class ConfirmBillPage extends HttpServlet {
                 double total = tr.getTotal();
                 pr.insertPurchaseRecord(userId, bookId, quantity, refund, total);
             }
+            session.removeAttribute("transactionList");
             RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/billConfirm.jsp");
             dis.forward(request, response);
         } catch (Exception e) {

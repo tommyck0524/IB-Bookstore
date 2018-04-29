@@ -64,7 +64,7 @@ public class browseBookPage extends HttpServlet {
              session.setAttribute("transactionList", transactionList);
         }
             try {
-                     bookDao bookDao = new bookDao(dbuser, dbpw, dburl);;
+                     bookDao bookDao = new bookDao(dbuser, dbpw, dburl);
                      //BookBean book = new BookBean(1,"HARRY", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg" );
                      //BookBean book2 = new BookBean(2,"HARRY2", "https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg");
 
