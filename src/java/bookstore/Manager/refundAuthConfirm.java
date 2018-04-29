@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bookstore.Customer;
+package bookstore.Manager;
 
 import bookstore.JavaBeans.RefundRequestBean;
 import bookstore.dao.refundRequestDao;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author hochikeung
  */
-public class refundReceiptPage extends HttpServlet {
+public class refundAuthConfirm extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +33,6 @@ public class refundReceiptPage extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
         protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,21 +41,17 @@ public class refundReceiptPage extends HttpServlet {
         String dbpw = getServletContext().getInitParameter("dbpw");
         String dburl = getServletContext().getInitParameter("dburl");
         HttpSession session = request.getSession();
-        String PID = request.getParameter("PID");
+        String RID = request.getParameter("RID");
         try{
         refundRequestDao rrd = new refundRequestDao();
-        rrd.insertRefundRequest(PID,dbuser,dbpw,dburl);
-        String RID = rrd.getRID(PID, dbuser, dbpw, dburl);
-        RefundRequestBean rrb = new RefundRequestBean(RID,PID);
-        session.setAttribute("rrb",rrb);
-        RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refundReceipt.jsp");
+        rrd.deleteRequest(RID,dbuser,dbpw,dburl);
+        RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refundAuthorizationConfirm.jsp");
         dis.forward(request, response);
         } catch (ClassNotFoundException e) {
            out.println("<div style='color: red'>" + e.toString() + "</div>");
         } catch (SQLException e) {
            out.println("<div style='color: red'>" + e.toString() + "</div>");
         }
-   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

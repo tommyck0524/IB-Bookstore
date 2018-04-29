@@ -98,7 +98,8 @@ $(function() {
       <img src="images/demo/930x375.gif" alt="" /> </div>
   </div>
 </div>
-        <h1>Your request is sent to manager for processing.</h1>
+        <h1>Your request with ID ${rrb.RID} is sent to manager for processing.</h1>
+        Purchase ID: ${rrb.PID}
         <a href="home">Return to home page.</a>
     </body>
 </html>

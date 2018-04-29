@@ -1,9 +1,5 @@
-<web-app 
-xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-    version="3.0">
- 
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <context-param>
         <param-name>dbuser</param-name>
         <param-value>sa</param-value>
@@ -16,7 +12,6 @@ xmlns="http://java.sun.com/xml/ns/javaee"
         <param-name>dburl</param-name>
         <param-value>jdbc:sqlserver://localhost;databaseName=TestDB</param-value>
     </context-param>
-    
     <servlet>
         <servlet-name>homePage</servlet-name>
         <servlet-class>bookstore.homePage</servlet-class>
@@ -24,7 +19,6 @@ xmlns="http://java.sun.com/xml/ns/javaee"
     <servlet>
         <servlet-name>loginPage</servlet-name>
         <servlet-class> bookstore.loginPage</servlet-class>
-        
     </servlet>
     <servlet>
         <servlet-name>registrationPage</servlet-name>
@@ -69,6 +63,10 @@ xmlns="http://java.sun.com/xml/ns/javaee"
     <servlet>
         <servlet-name>loginSuccessPage</servlet-name>
         <servlet-class>bookstore.loginSuccessPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>refundAuthConfirm</servlet-name>
+        <servlet-class>bookstore.Manager.refundAuthConfirm</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homePage</servlet-name>
@@ -121,6 +119,10 @@ xmlns="http://java.sun.com/xml/ns/javaee"
     <servlet-mapping>
         <servlet-name>loginSuccessPage</servlet-name>
         <url-pattern>/loginSuccess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>refundAuthConfirm</servlet-name>
+        <url-pattern>/refundAuthConfirm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
