@@ -26,8 +26,8 @@ $(function() {
 });
 </script>
 </head>
-<%--! session.setAttribute("username", "sunny"); %>
-<% session.setAttribute("userrole", "customer"); !--%>
+<%--session.setAttribute("username", "sunny"); %>
+<% session.setAttribute("userrole", "admin"); --%>
 <body id="top">
 <div class="wrapper col1">
   <div id="header">
@@ -54,7 +54,7 @@ $(function() {
         <%if(userrole.equals("admin")){%> 
         <li><a href="#"> Adminstration </a>
           <ul>
-            <li><a href="#">Book Management</a></li>
+            <li><a href="bookManagement">Book Management</a></li>
             <li><a href="refundAuth">Authorize refund request</a></li>
           </ul>
         </li>

@@ -21,7 +21,7 @@
 </head>
     <body id="top">
 <% session.setAttribute("username", "sunny"); %>
-<% session.setAttribute("userrole", "customer"); %>
+<% session.setAttribute("userrole", "admin"); %>
 <div class="wrapper col1">
   <div id="header">
     <div id="topnav">
@@ -45,7 +45,7 @@
         <%if(userrole.equals("admin")){%> 
         <li><a href="#"> Adminstration </a>
           <ul>
-            <li><a href="#">Book Management</a></li>
+            <li><a href="bookManagement">Book Management</a></li>
             <li><a href="#">Authorize refund request</a></li>
           </ul>
         </li>

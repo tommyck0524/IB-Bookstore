@@ -85,7 +85,7 @@
                         <input placeholder="Your Phone number (optional)" type="text" tabindex="4" >
                     </fieldset>
                     <fieldset>
-                        <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+                        <textarea placeholder="Type your message here...." tabindex="5" ></textarea>
                     </fieldset>
                     <fieldset>
                         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
