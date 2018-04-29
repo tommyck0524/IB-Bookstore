@@ -1,6 +1,6 @@
 <%-- 
-    Document   : logout
-    Created on : Apr 27, 2018, 11:17:45 AM
+    Document   : register
+    Created on : Apr 22, 2018, 2:41:47 PM
     Author     : hochikeung
 --%>
 
@@ -10,9 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
     <body>
-        <p>You have successfully logged out!<p/>
-        <a href="home">Return to home page.</a>
+        <div class="login-page">
+        <div class="form">
+        <h4> You have successfully logged out!</h4>
+        <a href="home">
+        <button>Return to Home Page</button>
+        </a>
+                </div>
+        </div>
     </body>
 </html>

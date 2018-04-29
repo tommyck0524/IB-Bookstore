@@ -1,6 +1,6 @@
 <%-- 
-    Document   : error
-    Created on : Apr 25, 2018, 11:33:25 PM
+    Document   : login
+    Created on : Apr 22, 2018, 2:41:55 PM
     Author     : hochikeung
 --%>
 
@@ -9,31 +9,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
-    <body>    
-        <a href="">Home</a>
-         <a href="browse">Browse Books</a>
-         <a href="purchase">Purchase Books</a>
-         <a href="login">Login</a>
-         <a href="register">Register</a>
-         <hr>
-         <p>The username or password are not correct. Please input again.</p>
-           <form action="login" method="POST">
-            <table>
-                <tr>
-                    <td>Username</td>
-                    <td><input type="text" name="username" /></td>
-                </tr>
-                
-                <tr>
-                    <td>Password</td>
-                    <td><input type="password" name="password" /></td>
-                </tr>
-                
-                <tr>
-                    <td><input type="submit" value="Login"/></td>
-                </tr>
-        <form/>
+    <body>
+        
+    <div class="login-page">
+    <div class="form">
+    <form class="login-form" action="login" method="POST">
+        <h4>The username/password is not valid. Please input again</h4>
+      <input type="text" placeholder="username"  name="username" />
+      <input type="password" placeholder="password" name="password"/>
+      <button type="submit" value="Login" >login</button>
+      <p class="message">Not registered? <a href="register">Create an account</a></p>
+    </form>
+  </div>
+</div>
     </body>
 </html>

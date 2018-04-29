@@ -67,7 +67,6 @@ public class loginPage extends HttpServlet {
                 String email = userdao.getAttribute("email",username,dbuser,dbpw,dburl);
                 UserBean userbean = new UserBean(UID,username,password,role,email);
                 session.setAttribute("userbean",userbean);
-                //session.setAttribute("userrole",role);
                 RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/home.jsp");
                 dis.forward(request, response);
             } else {
