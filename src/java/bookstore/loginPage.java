@@ -56,6 +56,15 @@ public class loginPage extends HttpServlet {
         String dbpw = getServletContext().getInitParameter("dbpw");
         String dburl = getServletContext().getInitParameter("dburl");
 
+        String status = (String) request.getParameter("redirect");
+        if(status!=null)
+        if (status.equals("redirect")) {
+            RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/login.jsp");
+            dis.forward(request, response);
+        }
+           
+            
+
         try {
             userDao userdao = new userDao();
             boolean valid = userdao.userIsValid(username, password,dbuser,dbpw,dburl);
