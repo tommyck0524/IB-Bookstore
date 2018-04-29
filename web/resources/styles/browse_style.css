@@ -156,7 +156,7 @@ Gallery grid
     margin-top: 2.5em;
   }
   .cd-gallery > li {
-    width: 30%;
+    width: 300px;
     float: left;
     margin: 0 5% 5% 0;
   }

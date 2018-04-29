@@ -136,13 +136,13 @@ iframe {
 [ Table ]*/
 
 .limiter {
-  width: 1366px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .container-table100 {
-  width: 100%;
-  min-height: 100vh;
+
+  
   background: #fff;
 
   display: -webkit-box;
