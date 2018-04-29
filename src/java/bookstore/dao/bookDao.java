@@ -82,8 +82,10 @@ public class bookDao {
             String dbLoginId = "aiad022"; // database login ID 
             String dbPwd = "aiad022"; // database password 
             Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM book where bookname = 'sea'");
-            //pstmt.setString(1, bookName);
+            String sqlStatement = "SELECT * FROM book where bookname = ?";
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+            pstmt.setString(1, bookName);
             ResultSet rs = pstmt.executeQuery();
             bookId = rs.getInt("bookid");
         } catch (ClassNotFoundException e) {
@@ -98,12 +100,27 @@ public class bookDao {
 
     public void updateBookInfo(String bookName, String quantity, String description, String price, String picture) {
         try {
+            int quantity_int = 0;
+            double price_double = 0;
+            if (quantity != null) {
+                quantity_int = Integer.parseInt(quantity);
+            }
+            if (quantity != null) {
+                price_double = Double.parseDouble(price);
+            }
             java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String dbLoginId = "aiad022"; // database login ID 
             String dbPwd = "aiad022"; // database password 
             Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
-
+            String sqlStatement = "Update book set[quantity]=?,[description]=?,[price]=?,[picture]=? where [bookname]=? ";
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstmt.setInt(1, quantity_int);
+            pstmt.setString(2, description);
+            pstmt.setDouble(3, price_double);
+            pstmt.setString(4, picture);
+            pstmt.setString(5, bookName);
+            pstmt.executeUpdate();
         } catch (ClassNotFoundException e) {
 
         } catch (SQLException e) {
@@ -117,24 +134,24 @@ public class bookDao {
         try {
             int quantity_int = 0;
             double price_double = 0;
-            if(quantity!=null) {
-                quantity_int=Integer.parseInt(quantity);
+            if (quantity != null) {
+                quantity_int = Integer.parseInt(quantity);
             }
-            if(quantity!=null) {
-                price_double=Double.parseDouble(price);
+            if (quantity != null) {
+                price_double = Double.parseDouble(price);
             }
             java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String dbLoginId = "aiad022"; // database login ID 
             String dbPwd = "aiad022"; // database password 
             Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
- String sqlStatement = "INSERT INTO [book]([bookname],[quantity],[description],[price],[picture]) VALUES (?,?,?,?,?)";
- PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            pstmt.setString(1,bookName);
-            pstmt.setInt(2,quantity_int);
-            pstmt.setString(3,description);
-            pstmt.setDouble(4,price_double);
-            pstmt.setString(5,picture);
+            String sqlStatement = "INSERT INTO [book]([bookname],[quantity],[description],[price],[picture]) VALUES (?,?,?,?,?)";
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstmt.setString(1, bookName);
+            pstmt.setInt(2, quantity_int);
+            pstmt.setString(3, description);
+            pstmt.setDouble(4, price_double);
+            pstmt.setString(5, picture);
             pstmt.executeUpdate();
         } catch (ClassNotFoundException e) {
 
@@ -153,8 +170,8 @@ public class bookDao {
             String dbPwd = "aiad022"; // database password 
             Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
             String sqlStatement = "DELETE FROM [book] where bookname = ?";
-            PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            pstmt.setString(1,bookName);
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstmt.setString(1, bookName);
             pstmt.executeUpdate();
 
         } catch (ClassNotFoundException e) {

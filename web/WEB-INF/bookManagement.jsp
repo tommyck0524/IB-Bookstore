@@ -95,7 +95,7 @@
                                         <c:forEach var="book" items="${bookList}">
                                             <tr class="row100 body">
                                         <form action="bookManagement" method="post">     
-                                            <td class="cell100 column5"><input type="text" name="bookname" value=${book.bookName}></td>
+                                            <td class="cell100 column5"><input class="readonly" type="text" name="bookname" readonly value=${book.bookName} ></td>
                                             <td class="cell100 column2"><input type="text" name="quantity" value=${book.quantity}></td>
                                             <td class="cell100 column3"><input type="text" name="description" value=${book.description}></td>
                                             <td class="cell100 column4"><input type="text" name="price" value=${book.price}> </td>

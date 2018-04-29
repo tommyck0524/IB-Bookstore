@@ -52,7 +52,7 @@ public class bookManagementPage extends HttpServlet {
             
         }
         if (action != null && action.equals("modify")) {
-            
+            book.updateBookInfo(bookName, quantity, description, price, picture);
         }
         if (action != null && action.equals("delete")) {
             book.deleteBook(bookName);
