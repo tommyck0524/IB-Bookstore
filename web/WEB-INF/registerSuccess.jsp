@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registration Success Page</title>
         <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
     <body>

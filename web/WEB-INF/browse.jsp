@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-<title>IB_Bookstore</title>
+<title>IB_Bookstore Book Browser</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="resources/styles/layout.css" type="text/css" />
 <link rel="stylesheet" href="resources/styles/browse_reset.css" type="text/css" />
