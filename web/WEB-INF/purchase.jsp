@@ -118,7 +118,14 @@
                                                       </div>
                         </div>
                 </div>
+        <div class="bot-container">
+        <p> gff </p>
+        <form action="purchase" method="post">
+              <button type="submit" value="Submit">Submit</button>
+        </form>
+    </div>
             </div>
+ 
 
 </div>
 <!-- ####################################################################################################### -->

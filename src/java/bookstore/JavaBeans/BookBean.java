@@ -28,7 +28,14 @@ public class BookBean {
          setPrice(price);
          setPicture(picture);
     }
-    
+
+    public BookBean(int bookId, String bookName, String picture) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.picture = picture;
+    }
+
+
     
     public int getQuantity() {
         return quantity;
