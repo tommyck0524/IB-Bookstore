@@ -55,7 +55,7 @@ $(function() {
         <li><a href="#"> Adminstration </a>
           <ul>
             <li><a href="#">Book Management</a></li>
-            <li><a href="#">Authorize refund request</a></li>
+            <li><a href="refundAuth">Authorize refund request</a></li>
           </ul>
         </li>
         <%}%>
