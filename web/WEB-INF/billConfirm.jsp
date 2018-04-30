@@ -9,10 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bill Confirmation</title>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
     </head>
     <body>
-        <h1>Your request has been done! Confirmation email has been sent to ${email}</h1>
-        <a href="home"> click here to go back to home page <a/>
+        <div class="login-page">
+            <div class="form">
+                <form class="login-form">
+                    <h4>Your request has been done! Confirmation email has been sent to <%=request.getParameter("email")%></h4>
+                    <a href="home"> click here to go back to home page <a/>
+
+                </form>
+            </div>
+        </div>
     </body>
+
 </html>

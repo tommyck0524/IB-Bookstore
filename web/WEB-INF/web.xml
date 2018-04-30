@@ -2,15 +2,15 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <context-param>
         <param-name>dbuser</param-name>
-        <param-value>sa</param-value>
+        <param-value>aiad022</param-value>
     </context-param>
     <context-param>
         <param-name>dbpw</param-name>
-        <param-value>Tommy6565,.</param-value>
+        <param-value>aiad022</param-value>
     </context-param>
     <context-param>
         <param-name>dburl</param-name>
-        <param-value>jdbc:sqlserver://localhost;databaseName=TestDB</param-value>
+        <param-value>jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db</param-value>
     </context-param>
 <!--    java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
 //            String dbLoginId = "aiad022"; // database login ID 

@@ -34,11 +34,8 @@ public class bookDao {
     public List<BookBean> retriveBookList() {
         List<BookBean> booklist = new ArrayList<>();
         try {
-            java.lang.String url = this.url;
-            String dbLoginId = this.dbLoginId; // database login ID 
-            String dbPwd = this.dbPwd; // database password 
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
+            Connection con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery("SELECT * FROM book");
             while (rs.next()) {
@@ -63,7 +60,7 @@ public class bookDao {
         try {
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);
-            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM book where bookName = ?");
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM book WHERE bookName = ?");
             pstmt.setString(1, bookName);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -81,27 +78,24 @@ public class bookDao {
     }
 
     public int getBookIdByBookName(String bookName) {
-        int bookId = 0;
         try {
-            java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
+            int bookId = -1;
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbLoginId = "aiad022"; // database login ID 
-            String dbPwd = "aiad022"; // database password 
-            Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);
-            String sqlStatement = "SELECT * FROM book where bookname = ?";
+            Connection con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);
+            String sqlStatement = "SELECT * FROM book WHERE bookname = ?";
             PreparedStatement pstmt = con.prepareStatement(sqlStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-
             pstmt.setString(1, bookName);
             ResultSet rs = pstmt.executeQuery();
-            bookId = rs.getInt("bookid");
+            while(rs.next()){
+                 bookId = rs.getInt("bookid");
+            }
+             return bookId;
         } catch (ClassNotFoundException e) {
 
         } catch (SQLException e) {
 
-        } finally {
-
-        }
-        return bookId;
+        } 
+        return -1;
     }
 
     public void updateBookInfo(String bookName, String quantity, String description, String price, String picture) {

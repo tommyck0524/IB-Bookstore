@@ -127,14 +127,15 @@ public class userDao {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM users where username = ?");               
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
             userId = rs.getInt("UID");
+            }
          } catch (ClassNotFoundException e) {
             
         } catch (SQLException e) {
             
         } finally {
-           
+             return userId;
         }
-        return userId;
     }
 }

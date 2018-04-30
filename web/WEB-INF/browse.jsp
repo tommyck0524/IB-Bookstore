@@ -3,6 +3,7 @@
     Created on : Apr 22, 2018, 2:42:14 PM
     Author     : hochikeung
 --%>
+<%@page import="bookstore.JavaBeans.UserBean"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,25 +20,25 @@
 <script type="text/javascript">
 </script>
 </head>
-    <body id="top">
-<% session.setAttribute("username", "sunny"); %>
-<% session.setAttribute("userrole", "admin"); %>
+<body id="top">
 <div class="wrapper col1">
   <div id="header">
     <div id="topnav">
      <ul>       
 
-          <%if(session.getAttribute("username")!=null ){%>    
+          <%if(session.getAttribute("userbean")!=null ){%>    
             <li class="last"><a href="logout">Logout</a>
             <%}else{%>
            <li class="last"><a href="login">Login</a>
+           <li><a href="register">Register</a>
             <%}%>
-        <%if(session.getAttribute("username")!=null ){%>  
-        <%String userrole = (String)session.getAttribute("userrole");%>
+            <% UserBean userbean = (UserBean)session.getAttribute("userbean");%>
+        <%if(session.getAttribute("userbean")!=null){%>  
+           <% String userrole = userbean.getRole();%>
         <%if(userrole.equals("customer")){%> 
         <li><a href="#"> Member area</a>
           <ul>
-            <li><a href="#"> Request for refund</a></li>
+            <li><a href="refund"> Request for refund</a></li>
             <li><a href="#"> Account information</a></li>
           </ul>
         </li>
@@ -46,27 +47,31 @@
         <li><a href="#"> Adminstration </a>
           <ul>
             <li><a href="bookManagement">Book Management</a></li>
-            <li><a href="#">Authorize refund request</a></li>
+            <li><a href="refundAuth">Authorize refund request</a></li>
           </ul>
         </li>
         <%}%>
-         
         <li><a href="purchase"> Purchase book </a>
             <%}%>
-        <li class="active"><a href="browse">Browse a book</a>
-        <li ><a href="home">Homepage</a>
+        <li><a href="browse">Browse a book</a>
+        <li class="active"><a href="home">HomePage</a>
       </ul>
        
       
     </div>
     <div id="logo">
-                  
-      <h1><a href="home"><strong>O</strong>p <strong>B</strong>ookStore</a></h1>
+      <h1><a href="index.html"><strong>O</strong>p <strong>B</strong>ookStore</a></h1>
     </div>
+        <div>
+            <%if(session.getAttribute("userbean")!=null ){%>
+            <% String username = userbean.getUsername();%>
+            <p>Welcome,<%=username%></p>
+            <%}%>
+        </div>
     <br class="clear" />
   </div>
-        
 </div>
+        
 <div class="wrapper col3">
  <c:forEach var="book" items="${bookList}">
         <a href="#0" class="cd-cart">

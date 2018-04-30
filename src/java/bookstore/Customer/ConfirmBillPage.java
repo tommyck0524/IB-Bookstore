@@ -7,6 +7,7 @@ package bookstore.Customer;
 
 import bookstore.JavaBeans.BookBean;
 import bookstore.JavaBeans.Transaction;
+import bookstore.JavaBeans.UserBean;
 import bookstore.dao.bookDao;
 import bookstore.dao.purchaseHistoryDao;
 import bookstore.dao.userDao;
@@ -55,7 +56,8 @@ public class ConfirmBillPage extends HttpServlet {
             userDao user = new userDao(dburl,dbuser,dbpw);
             bookDao book = new bookDao(dbuser, dbpw, dburl);
             //gather transaction info
-            String username = (String) session.getAttribute("username");
+            UserBean ub = (UserBean)session.getAttribute("userbean");
+            String username = ub.getUsername();
             int userId = user.getUserIdByUserName(username);
             int refund = 1;
             //

@@ -30,10 +30,7 @@ public class purchaseHistoryDao {
         this.dbLoginId = dbLoginId;
         this.dbPwd = dbPwd;
     }
-   
 
-   
-    
     
     public ArrayList<PurchaseBean> getPBList(String UID) throws ClassNotFoundException, SQLException {
             Connection con = null;
@@ -58,14 +55,10 @@ public class purchaseHistoryDao {
     
      public void insertPurchaseRecord(int UID,int BID, int quantity, int refund, double total) throws ClassNotFoundException, SQLException {
 
-            java.lang.String url = "jdbc:sqlserver://w2ksa.cs.cityu.edu.hk:1433;databaseName=aiad022_db;";
             java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String dbLoginId = "aiad022"; // database login ID 
-            String dbPwd = "aiad022"; // database password 
-            Connection con = DriverManager.getConnection(url, dbLoginId, dbPwd);  
+            Connection con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);  
             String sqlStatement = "INSERT INTO [purchaseHistory]([UID],[BID],[quantity],[refund],[total]) VALUES (?,?,?,?,?)";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-           
             PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             pstmt.setInt(1,UID);
             pstmt.setInt(2,BID);
