@@ -84,7 +84,7 @@
 				<a href="#0">
 					<ul class="cd-slider-wrapper">
 						<li><img src="img/thumb-1.jpg" alt="Preview image"></li>
-						<li class="selected"><img class="product" src="https://images-na.ssl-images-amazon.com/images/I/51E7NvVLO9L._SX346_BO1,204,203,200_.jpg" alt="Preview image"></li>
+						<li class="selected"><img class="product" src="https://images-na.ssl-images-amazon.com/images/I/916RAIVJSBL.jpg" alt="Preview image"></li>
 						<li><img src="img/thumb-3.jpg" alt="Preview image"></li>
 					</ul>
 				</a>
