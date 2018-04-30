@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Logout Page</title>
         <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
+                    <jsp:include page="header.jsp" />
     </head>
     <body>
         <div class="login-page">
@@ -21,5 +22,6 @@
         </a>
                 </div>
         </div>
+            <jsp:include page="footer.jsp" />
     </body>
 </html>

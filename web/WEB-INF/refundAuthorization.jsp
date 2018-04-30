@@ -19,6 +19,7 @@
 <script src="js/modernizr.js"></script> <!-- Modernizr -->
 <script type="text/javascript">
 </script>
+            <jsp:include page="header.jsp" />
 </head>
     <body id="top">
 <div class="wrapper col1">
@@ -129,6 +130,7 @@
 
 	</ul> <!-- cd-gallery -->
 </div>
-<!-- ####################################################################################################### -->
+<!-- ####################################################################################################### -->\           
+            <jsp:include page="footer.jsp" />
     </body>
 </html>

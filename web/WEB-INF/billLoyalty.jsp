@@ -9,19 +9,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-<title>IB_Bookstore Book Browser</title>
+<title>Bill Loyalty</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="resources/styles/layout.css" type="text/css" />
-<link rel="stylesheet" href="resources/styles/browse_reset.css" type="text/css" />
-<link rel="stylesheet" href="resources/styles/browse_style.css" type="text/css" />
-<script type="text/javascript" src="resources/scripts/jquery.min.js"></script>
-<script type="text/javascript" src="resources/scripts/jquery.cycle.min.js"></script>
-<script src="js/modernizr.js"></script> <!-- Modernizr -->
+<link rel="stylesheet" type="text/css" href="resources/styles/purchase_util.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/purchase_main.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/purchase_reboot.scss">
 <script type="text/javascript">
 </script>
             <jsp:include page="header.jsp" />
 </head>
-<body id="top">
+    <body id="top">
 <div class="wrapper col1">
   <div id="header">
     <div id="topnav">
@@ -72,49 +70,21 @@
     <br class="clear" />
   </div>
 </div>
-        
-<div class="wrapper col3">
- <c:forEach var="book" items="${bookList}">
-        <a href="#0" class="cd-cart">
-		<span>0</span>
-	</a>
+          <div class="wrapper col3">
+            <div class="container">  
+                <form id="contact" action="ConfirmBillLoyalty" method="post">
+       
+                    <h3>Total:${total}</h3>
+                    <h4>Please be reminded that item purchased with loyalty points cannot be refunded</h4>         
+                    <fieldset>
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                    </fieldset>
+                    <input type="hidden" name="email" value=${email}
+                </form>
+            </div>
 
-	<ul class="cd-gallery">
-		<li>
-			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						
-						<li class="selected"><img class="product" src=${book.picture}></li>
-						
-					</ul>
-				</a>
-
-				
-
-				<button class="cd-customization-trigger">Customize</button>
-			</div> <!-- .cd-single-item -->
-
-			<div class="cd-item-info">
-				<b>${book.bookName}</b>
-				<em> $${book.price}</em>
-			</div> <!-- cd-item-info -->
-                        <form action="browse" method="post">
-                            <input type="hidden" name ="bookname" value=${book.bookName}>
-                            <input type="hidden" name ="price" value=${book.price}> 
-                            <p> quantity<input type="text" name="quantity"></p>
-                            <button type="submit" value="add to chart"> add to chart </button>
-                        </form>
-		</li>
-    </c:forEach>
-      
-<script src="resources/js/jquery-2.1.4.js"></script>
-<script src="resources/js/main.js"></script> <!-- Resource jQuery -->
-		
-
-	</ul> <!-- cd-gallery -->
-</div>
-<!-- ####################################################################################################### -->
+        </div>       
             <jsp:include page="footer.jsp" />
+        <!-- ####################################################################################################### -->
     </body>
 </html>

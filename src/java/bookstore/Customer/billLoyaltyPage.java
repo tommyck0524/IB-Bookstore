@@ -7,10 +7,7 @@ package bookstore.Customer;
 
 import bookstore.JavaBeans.BookBean;
 import bookstore.JavaBeans.Transaction;
-import bookstore.JavaBeans.UserBean;
 import bookstore.dao.bookDao;
-import bookstore.dao.purchaseHistoryDao;
-import bookstore.dao.userDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author hochikeung
  */
-public class ConfirmBillPage extends HttpServlet {
+public class billLoyaltyPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,32 +43,14 @@ public class ConfirmBillPage extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            String dbuser = getServletContext().getInitParameter("dbuser");
-            String dbpw = getServletContext().getInitParameter("dbpw");
-            String dburl = getServletContext().getInitParameter("dburl");
-
             HttpSession session = request.getSession();
             List<Transaction> trs = (List<Transaction>) session.getAttribute("transactionList");
-            purchaseHistoryDao pr = new purchaseHistoryDao(dburl,dbuser,dbpw);
-            userDao user = new userDao(dburl,dbuser,dbpw);
-            bookDao book = new bookDao(dbuser, dbpw, dburl);
-            //gather transaction info
-            UserBean ub = (UserBean)session.getAttribute("userbean");
-            String username = ub.getUsername();
-            int userId = user.getUserIdByUserName(username);
-            int refund = 1;
-            //
+            double total = 0;
             for (Transaction tr : trs) {
-                int bookId = book.getBookIdByBookName(tr.getBookName());
-                int quantity = tr.getPurchaseQuantity();
-                double total = tr.getTotal();
-                pr.insertPurchaseRecord(userId, bookId, quantity, refund, total);
-                int currentLP = user.getCurrentLoaylityPoints(username);
-				currentLP += total;
-				user.setLoyalityPoints(username,currentLP);
+                total = total + tr.getTotal();
             }
-            session.removeAttribute("transactionList");
-            RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/billConfirm.jsp");
+            request.setAttribute("total", total);
+            RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/billLoyalty.jsp");
             dis.forward(request, response);
         } catch (Exception e) {
             out.println("<div style='color: red'>" + e.toString() + "</div>");

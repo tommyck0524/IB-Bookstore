@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="resources/styles/purchase_reboot.scss">
 <script type="text/javascript">
 </script>
+            <jsp:include page="header.jsp" />
 </head>
     <body id="top">
 <div class="wrapper col1">
@@ -117,22 +118,26 @@
 
                                                                               </tbody>
 
-                                                                            
-                                                                              
+
+
                                                                       </table>
                                                               </div>
-                                                      </div>
+                            </div>
                         </div>
                 </div>
-        <div class="bot-container">
-        <form action="bill" method="post">
-              <button class="button" type="submit" value="Submit">Purchase now</button>
-        </form>
-    </div>
+                <div class="bot-container">
+                    <form action="bill" method="post">
+                        <button class="button" type="submit" value="Submit">Purchase now</button>
+                    </form>
+                    <form action="billLoyalty" method="post">
+                        <button class="button" type="submit" value="Submit">Purchase with Loyality points</button>
+                    </form>
+                </div>
             </div>
  
 
 </div>
 <!-- ####################################################################################################### -->
+            <jsp:include page="footer.jsp" />
     </body>
 </html>

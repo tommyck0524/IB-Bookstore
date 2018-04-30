@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,7 +8,6 @@ package bookstore.Customer;
 
 import bookstore.JavaBeans.BookBean;
 import bookstore.JavaBeans.Transaction;
-import bookstore.JavaBeans.UserBean;
 import bookstore.dao.bookDao;
 import bookstore.dao.purchaseHistoryDao;
 import bookstore.dao.userDao;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author hochikeung
  */
-public class ConfirmBillPage extends HttpServlet {
+public class ConfirmBillLoyaltyPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -56,19 +56,19 @@ public class ConfirmBillPage extends HttpServlet {
             userDao user = new userDao(dburl,dbuser,dbpw);
             bookDao book = new bookDao(dbuser, dbpw, dburl);
             //gather transaction info
-            UserBean ub = (UserBean)session.getAttribute("userbean");
-            String username = ub.getUsername();
+			//remind!! need to change
+            String username = (String) session.getAttribute("username");
             int userId = user.getUserIdByUserName(username);
-            int refund = 1;
+            int refund = 0;
             //
             for (Transaction tr : trs) {
                 int bookId = book.getBookIdByBookName(tr.getBookName());
                 int quantity = tr.getPurchaseQuantity();
                 double total = tr.getTotal();
                 pr.insertPurchaseRecord(userId, bookId, quantity, refund, total);
-                int currentLP = user.getCurrentLoaylityPoints(username);
-				currentLP += total;
-				user.setLoyalityPoints(username,currentLP);
+                double currentLP = user.getCurrentLoaylityPoints(username);
+                double updatedLP = currentLP - total;
+                user.setLoyalityPoints(username, updatedLP);
             }
             session.removeAttribute("transactionList");
             RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/billConfirm.jsp");

@@ -10,8 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Book Detail</title>
+                    <jsp:include page="header.jsp" />
     </head>
     <body>
         <h1>Hello World!</h1>
+            <jsp:include page="footer.jsp" />
     </body>
 </html>

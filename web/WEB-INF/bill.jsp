@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="resources/styles/bill.css">
         <script type="text/javascript">
         </script>
+                        <jsp:include page="header.jsp" />
     </head>
        <body id="top">
 <div class="wrapper col1">
@@ -103,5 +104,6 @@
 
         </div>
         <!-- ####################################################################################################### -->
+            <jsp:include page="footer.jsp" />
     </body>
 </html>

@@ -138,4 +138,41 @@ public class userDao {
              return userId;
         }
     }
+    
+    public int getCurrentLoaylityPoints(String username) {
+		int loyalityPoints = 0;
+		try {
+            java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);       
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM users where username = ?");               
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            loyalityPoints = rs.getInt("loyality");
+         } catch (ClassNotFoundException e) {
+            
+        } catch (SQLException e) {
+            
+        } finally {
+           
+        }
+        return loyalityPoints;
+	}
+	
+	public void setLoyalityPoints(String username, double loyalityPoints) {
+		 try {
+            java.lang.Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);
+            String sqlStatement = "Update user set[loyality]=? where username=?";
+            PreparedStatement pstmt = con.prepareStatement(sqlStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstmt.setDouble(1, loyalityPoints);
+            pstmt.setString(2, username);
+
+        } catch (ClassNotFoundException e) {
+
+        } catch (SQLException e) {
+
+        } finally {
+
+        }
+	}
 }

@@ -25,6 +25,8 @@ $(function() {
     });
 });
 </script>
+            <jsp:include page="header.jsp" />
+
 </head>
 <%--session.setAttribute("username", "sunny"); %>
 <% session.setAttribute("userrole", "admin"); --%>
@@ -160,6 +162,7 @@ $(function() {
       </div>
     </div>
     <br class="clear" />
+            <jsp:include page="footer.jsp" />
   </div>
 </div>
 </div>

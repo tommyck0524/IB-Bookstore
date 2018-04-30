@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Error Page</title>
         <link rel="stylesheet" href="resources/styles/login.css" type="text/css" />
+                    <jsp:include page="header.jsp" />
     </head>
     <body>
         
@@ -25,5 +26,6 @@
     </form>
   </div>
 </div>
+            <jsp:include page="footer.jsp" />
     </body>
 </html>

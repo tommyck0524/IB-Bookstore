@@ -52,7 +52,7 @@ public class refundRequestPage extends HttpServlet {
         try{
         purchaseHistoryDao phd = new purchaseHistoryDao(dburl,dbuser,dbpw);
         PBList = phd.getPBList(UID);
-        session.setAttribute("PBList",PBList);
+        request.setAttribute("PBList",PBList);
         RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refund.jsp");
         dis.forward(request, response);
         } catch (ClassNotFoundException e) {

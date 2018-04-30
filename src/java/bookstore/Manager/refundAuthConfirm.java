@@ -6,6 +6,7 @@
 package bookstore.Manager;
 
 import bookstore.JavaBeans.RefundRequestBean;
+import bookstore.dao.purchaseHistoryDao;
 import bookstore.dao.refundRequestDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,7 +45,9 @@ public class refundAuthConfirm extends HttpServlet {
         String RID = request.getParameter("RID");
         try{
         refundRequestDao rrd = new refundRequestDao(dburl,dbuser,dbpw);
+        purchaseHistoryDao phd = new purchaseHistoryDao(dburl,dbuser,dbpw);
         rrd.deleteRequest(RID);
+        
         RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refundAuthorizationConfirm.jsp");
         dis.forward(request, response);
         } catch (ClassNotFoundException e) {
