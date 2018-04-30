@@ -70,7 +70,7 @@ public class purchaseHistoryDao {
      
        public void deleteRequest(String RID) throws ClassNotFoundException, SQLException {
             Connection con = null;
-            String sqlStatement = "DELETE FROM [refundRequest] where RID = ?";
+            String sqlStatement = "DELETE FROM [purchaseHistory] where PID = ?";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             con = DriverManager.getConnection(this.url, this.dbLoginId, this.dbPwd);
             PreparedStatement pstmt = con.prepareStatement(sqlStatement,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

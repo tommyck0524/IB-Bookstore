@@ -43,11 +43,12 @@ public class refundAuthConfirm extends HttpServlet {
         String dburl = getServletContext().getInitParameter("dburl");
         HttpSession session = request.getSession();
         String RID = request.getParameter("RID");
+        String PID = request.getParameter("PID");
         try{
         refundRequestDao rrd = new refundRequestDao(dburl,dbuser,dbpw);
         purchaseHistoryDao phd = new purchaseHistoryDao(dburl,dbuser,dbpw);
         rrd.deleteRequest(RID);
-        
+        phd.deleteRequest(PID);
         RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/refundAuthorizationConfirm.jsp");
         dis.forward(request, response);
         } catch (ClassNotFoundException e) {

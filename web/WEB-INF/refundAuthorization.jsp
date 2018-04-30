@@ -118,6 +118,7 @@
                                 Request ID:${request.RID}
 				Purchase ID:${request.PID}
                                 <input type="hidden" name="RID" value=${request.RID} >
+                                <input type="hidden" name="PID" value=${request.PID} >
                                 <input type="submit" value="Authorize">
                                 </form>
 			</div> <!-- cd-item-info -->
